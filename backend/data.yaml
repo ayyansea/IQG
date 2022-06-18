@@ -1,0 +1,25 @@
+---
+devops:
+    levels:
+        - "junior"
+        - "middle"
+        - "senior"
+    categories:
+        linux:
+            questions:
+                -
+                    question: "Легкий вопрос №1 :)"
+                    level: "junior"
+                -
+                    question: "Легкий вопрос №2 :)"
+                    level: "junior"
+
+frontend:
+    levels:
+        - "junior"
+    categories:
+        javascript:
+            questions:
+                -
+                    question: "AAAAAAAAAAAAAAA"
+                    level: "junior"
