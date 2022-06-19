@@ -13,6 +13,11 @@ devops:
                 -
                     question: "Легкий вопрос №2 :)"
                     level: "junior"
+        python:
+            questions:
+                - 
+                    question: "Python question 1"
+                    level: "middle"
 
 frontend:
     levels:

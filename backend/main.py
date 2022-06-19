@@ -22,20 +22,18 @@ with open("data.yaml", "r") as f:
 
 job_id = 0
 
-for key, value in data.items():
+for job, job_body in data.items():
 	cat_id = question_id = 0
-	value["id"] = str(job_id)
+	job_body["id"] = str(job_id)
 	job_id += 1
-	for key_2, value_2 in value.items():
-		if key_2 not in ["levels", "id"]:
-			# TODO: Added "categories" key, need to 
-			# adapt the loop.
-			value_2["id"] = str(cat_id)
-			cat_id += 1
-			for item in value_2["questions"]:
-				item["id"] = str(question_id)
-				question_id += 1 
-		
+	for job_item, job_item_body in job_body.items():
+		if job_item == "categories":
+			for category, category_body in job_item_body.items():
+				category_body["id"] = str(cat_id)
+				cat_id += 1
+				for question in category_body["questions"]:
+					question["id"] = str(question_id)
+					question_id += 1
 
 def get_response(items):
 	template = { "data": items, "success": True } 
@@ -59,11 +57,12 @@ def get_jobs():
 def get_categories(job_id):
 	categories = []
 
-	for key, value in data:
+	for key, value in data.items():
 		if value["id"] == str(job_id):
-			 
+			for category, category_body in value["categories"].items():
+				categories.append({"id": category_body["id"], "name": category}) 
 
-	return True
+	return get_response(categories)
 
 # ------
 # Utility Endpoints
