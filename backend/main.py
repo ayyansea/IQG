@@ -64,6 +64,32 @@ def get_categories(job_id):
 
 	return get_response(categories)
 
+@app.route("/iqg/api/jobs/<int:job_id>/levels", methods=GET())
+def get_levels(job_id):
+	levels = []
+
+	for key, value in data.items():
+		if value["id"] == str(job_id):
+			for level in value["levels"]:
+				levels.append({"name": level})
+	
+	return get_response(levels)
+
+# @app.route("/iqg/api/jobs/<int:job_id>/levels/<string:level_name>/questions", 
+# 			methods=GET())
+# def get_questions(job_id, level_name):
+# 	questions = []
+
+# 	for key, value in data.items():
+# 		if value["id"] == str(job_id):
+# 			for cat_key, cat_value in value["categories"]:
+# 				for group in cat_value["questions"]:
+# 					questions.append({"id": group["id"], 
+# 									  "question": group["question"],
+# 									  "level": group["level"]})
+	
+# 	return get_response(questions)
+
 # ------
 # Utility Endpoints
 # ------

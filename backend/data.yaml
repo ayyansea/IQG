@@ -12,7 +12,7 @@ devops:
                     level: "junior"
                 -
                     question: "Легкий вопрос №2 :)"
-                    level: "junior"
+                    level: "middle"
         python:
             questions:
                 - 
