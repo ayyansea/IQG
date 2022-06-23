@@ -1,19 +1,13 @@
+* {
+  font-family: 'IBM Plex Sans', sans-serif;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,17 +16,166 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+} */
+
+/* ///// */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e0e0e0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  align-self: center;
+  
+  margin-top: 20px;
+  margin-bottom: 30px;
+  /* font-family: 'Kreon', serif; */
+  font-size: 7em;
+  color: #f8ebff;
+  text-shadow:
+    /* rgb(246, 237, 255) 0.006em 0.006em 0.007em, */
+    #bdabd1 1px 1px 1px,
+    #bdabd1 1px 2px 1px,
+    #bdabd1 1px 3px 1px,
+    #bdabd1 1px 4px 1px,
+    #bdabd1 1px 5px 1px,
+    #bdabd1 1px 6px 1px,
+    #bdabd1 1px 7px 1px,
+    #bdabd1 1px 8px 1px,
+    #bdabd1 1px 9px 1px,
+    #bdabd1 1px 10px 1px,
+    #bdabd1 1px 11px 1px,
+    #bdabd1 1px 12px 1px,
+    rgba(51, 39, 71, 0.4) 1px 18px 6px,
+    rgba(51, 39, 71, 0.2) 1px 22px 10px,
+    rgba(51, 39, 71, 0.2) 1px 26px 35px,
+    rgba(51, 39, 71, 0.4) 1px 30px 65px,
+    white -0.15em -0.1em 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputs {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 45px;
+}
+
+.questions {
+  display: flex;
+  margin: 45px;
+
+  flex-wrap: wrap;
+
+}
+
+
+.test-button {
+
+  height: 40px;
+  margin: 5px 5px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  color: #464646;
+  font-size: 13px;
+  letter-spacing: 0.15px;
+  border: none;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #c4c4c4;
+  transition: 0.25s ease;
+  border-radius: 50px;
+  box-shadow: inset -2px -2px 4px #8b8b8b, inset 2px 2px 4px #d8d8d8;
+}
+
+.generate {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  height: 40px;
+  margin: 5px 5px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  border-radius: 50px;
+  background-color: #bdabd1;
+  display: flex;
+
+  border: none;
+
+  font-weight: bold;
+
+  align-items: center;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    -7px -7px 20px 0px #fff9,
+    -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px rgba(90, 65, 124, 0.133),
+    4px 4px 5px 0px rgba(90, 65, 124, 0.133);
+
+  transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.685);
+  text-decoration: none;
+}
+.btn:hover {
+/* background: radial-gradient(circle,  #0ff 0%, #e0e5ec 60%); */
+  color: #ffffff; 
+  animation: colorchange 3s linear infinite;
+}
+.btn:active  {
+  color: #ffffff; 
+  background-color: #cfbce6;
+  box-shadow:  4px 4px 6px 0 rgba(236, 236, 236, 0.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(236, 236, 236,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+
+
+.test-input {
+  width: 350px;
+  height: 40px;
+  margin: 5px 5px;
+  padding-left: 25px;
+  font-size: 13px;
+  letter-spacing: 0.15px;
+  border: none;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #e7e7e7;
+  transition: 0.25s ease;
+  border-radius: 15px;
+  box-shadow: inset 2px 2px 4px #bdbdbd, inset -2px -2px 4px #f9f9f9;
+}
+
+.questionItem {
+  width: 350px;
+  background-color: #f5f5f5;
+
+  margin: 5px 5px;
+  padding: 25px;
+  border-radius: 15px;
+
+  box-shadow: 8px 8px 8px #bdbdbd;
 }
