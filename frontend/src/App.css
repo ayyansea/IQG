@@ -157,7 +157,8 @@ body {
   width: 350px;
   height: 40px;
   margin: 5px 5px;
-  padding-left: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-size: 13px;
   letter-spacing: 0.15px;
   border: none;

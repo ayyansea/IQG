@@ -11,9 +11,33 @@ function App() {
 
       <div className='mainContainer'>
         <div className='inputs'>
-          <input className='test-input' placeholder='Должность' />
-          <input className='test-input' placeholder='Сложность' />
-          <input className='test-input' placeholder='Количество вопросов' />
+
+          <div class="selectJob">
+            <select className='test-input' id="cars" name="cars">
+              <option value="1" disabled>Должность</option>
+              <option value="2">Dev-ops</option>
+              <option value="3">Frontend</option>
+              <option value="4">Barista</option>
+            </select>
+          </div>
+
+          <div class="selectLevel">
+            <select className='test-input' id="cars" name="cars">
+              <option value="1" disabled>Сложность</option>
+              <option value="2">Junior</option>
+              <option value="3">Middle</option>
+              <option value="4">Senior</option>
+            </select>
+          </div>
+
+          <div class="selectCount">
+            <select className='test-input' id="cars" name="cars">
+              <option value="1" disabled>Количество вопросов</option>
+              <option value="2">5</option>
+              <option value="3">10</option>
+              <option value="4">15</option>
+            </select>
+          </div>
         </div>
 
         <div className='generate'>
