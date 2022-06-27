@@ -5,6 +5,13 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+  const [questions, setQuestions] = useState([])
+
+  const formSubmit = (result) => {
+    setQuestions(JSON.stringify(result.data))
+    console.log(result.data)
+  }
+
   return (
     <div className="App">
 
@@ -14,21 +21,15 @@ function App() {
 
       <div className="mainContainer">
 
-        <InputsForm />
-
-        <div className='questions'>
-          <QuestionItem />
-          <QuestionItem />
-          <QuestionItem />
-        </div>
+        <InputsForm callback={formSubmit} />
+        <Questions data={questions} />
 
       </div>
-
     </div>
   );
 }
 
-const InputsForm = () => {
+const InputsForm = (props) => {
   const [formData, setFormData] = useState({
     job: {
       id: "default",
@@ -43,6 +44,20 @@ const InputsForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    fetch("http://localhost:5000/iqg/api/jobs/" + String(formData.job.id) + "/levels/" + String(formData.level.id) + "/questions")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          props.callback(result)
+          console.log(result.data);
+          localStorage.setItem("questions", JSON.stringify(result.data));
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+
     console.log(formData)
   }
 
@@ -54,7 +69,7 @@ const InputsForm = () => {
     setFormData({ ...formData, level: { id: e.target.selectedOptions[0].id, name: e.target.value } });
   }
 
-  const handleChangeCount= (e) => {
+  const handleChangeCount = (e) => {
     setFormData({ ...formData, count: e.target.value });
   }
 
@@ -65,6 +80,7 @@ const InputsForm = () => {
     console.log(formData.level.name)
     if (formData.level.name == "Сложность" || formData.level.name == "") {
       count.disabled = true;
+      count.selectedIndex = 0;
     }
     else {
       count.disabled = false;
@@ -72,12 +88,14 @@ const InputsForm = () => {
 
     if (formData.job.id == null || formData.job.id == "default") {
       level.disabled = true;
-      count.disabled = true; 
+      level.selectedIndex = 0;
+
+      count.disabled = true;
+      count.selectedIndex = 0;
     }
     else {
       level.disabled = false;
     }
-
   })
 
   return (
@@ -98,7 +116,6 @@ const InputsForm = () => {
 const SelectJob = (props) => {
 
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -106,11 +123,9 @@ const SelectJob = (props) => {
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
           setItems(result.data);
         },
         (error) => {
-          setIsLoaded(true);
           setError(error);
         }
       )
@@ -122,8 +137,6 @@ const SelectJob = (props) => {
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Загрузка...</div>;
   } else {
     return (
       <div className="selectJob">
@@ -145,7 +158,6 @@ const SelectJob = (props) => {
 const SelectLevel = (props) => {
 
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -155,11 +167,9 @@ const SelectLevel = (props) => {
         .then(res => res.json())
         .then(
           (result) => {
-            setIsLoaded(true);
             setItems(result.data);
           },
           (error) => {
-            setIsLoaded(true);
             setError(error);
           }
         )
@@ -172,11 +182,7 @@ const SelectLevel = (props) => {
 
   if (error) {
     return <div>Ошибка: {error.message}</div>;
-  }
-  // else if (!isLoaded) {
-  //   return <div>Загрузка...</div>;
-  // } 
-  else {
+  } else {
     return (
       <div className="selectLevel">
         <select className="test-input" id="level" onChange={handleChange}>
@@ -184,7 +190,7 @@ const SelectLevel = (props) => {
             Сложность
           </option>
           {items.map(data => (
-            <option value={data.name}>
+            <option key={data.id} id={data.id} value={data.name}>
               {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
             </option>
           ))}
@@ -212,19 +218,44 @@ const SelectCount = (props) => {
   );
 }
 
-const QuestionItem = () => {
-  return (
-    <div className='questionItem'>
-      <h1 className='questionTitle'>Question item</h1>
-      <p className='questionText'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Suspendisse bibendum mollis placerat.
-        Sed bibendum tristique risus in rutrum.
-        Donec sit amet maximus nunc. Ut fringilla ipsum ut enim lacinia, eu rutrum ex feugiat.
-        Quisque ut justo eros. Duis at dignissim massa, at porttitor libero.
-        Praesent vel velit consequat, sollicitudin ante sit amet, maximus dui.
-      </p>
-    </div>);
+const Questions = (props) => {
+
+  if (props.data.length > 0) {
+    var resultQuestions = JSON.parse(props.data);
+    const final = [];
+
+    console.log(resultQuestions)
+
+    var counter = 0;
+
+    for (var i = 0; i < resultQuestions.length; i++) {
+      counter = counter + 1;
+      final.push(
+        <div className="questionItem">
+          <h1 className='questionTitle'>Вопрос № {counter}</h1>
+          <p className='questionText'>
+            {resultQuestions[i].question}
+          </p>
+        </div>
+      );
+    }
+    return <div className="questions">{final}</div>;
+  }
 }
+
+// const QuestionItem = () => {
+//   return (
+//     <div className='questionItem'>
+//       <h1 className='questionTitle'>Question item</h1>
+//       <p className='questionText'>
+//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+//         Suspendisse bibendum mollis placerat.
+//         Sed bibendum tristique risus in rutrum.
+//         Donec sit amet maximus nunc. Ut fringilla ipsum ut enim lacinia, eu rutrum ex feugiat.
+//         Quisque ut justo eros. Duis at dignissim massa, at porttitor libero.
+//         Praesent vel velit consequat, sollicitudin ante sit amet, maximus dui.
+//       </p>
+//     </div>);
+// }
 
 export default App;
