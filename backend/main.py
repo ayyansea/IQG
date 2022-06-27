@@ -1,8 +1,11 @@
 import yaml
 from yaml.loader import SafeLoader
 from flask import Flask, jsonify, make_response
+from flask_cors import CORS
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
+CORS(app)
 
 # I put this horrific abomination here because I don't want
 # to type methods with all these brackets and quotation marks
@@ -23,10 +26,14 @@ with open("data.yaml", "r") as f:
 job_id = 0
 
 for job, job_body in data.items():
-	cat_id = question_id = 0
+	cat_id = question_id = level_id = 0
 	job_body["id"] = str(job_id)
 	job_id += 1
 	for job_item, job_item_body in job_body.items():
+		if job_item == "levels":
+			for level in job_item_body:
+				level["id"] = str(level_id)
+				level_id += 1
 		if job_item == "categories":
 			for category, category_body in job_item_body.items():
 				category_body["id"] = str(cat_id)
@@ -63,6 +70,35 @@ def get_categories(job_id):
 				categories.append({"id": category_body["id"], "name": category}) 
 
 	return get_response(categories)
+
+@app.route("/iqg/api/jobs/<int:job_id>/levels", methods=GET())
+def get_levels(job_id):
+	levels = []
+
+	for key, value in data.items():
+		if value["id"] == str(job_id):
+			for level in value["levels"]:
+				levels.append({"name": level["name"], "id": level["id"]})
+	
+	return get_response(levels)
+
+@app.route("/iqg/api/jobs/<int:job_id>/levels/<int:level_id>/questions", methods=GET())
+def get_questions(job_id, level_id):
+	questions = []
+
+	for key, value in data.items():
+		if value["id"] == str(job_id):
+			for level in value["levels"]:
+				if level["id"] == str(level_id):
+					level_name = level["name"]
+			for cat_key, cat_value in value["categories"].items():
+				for group in cat_value["questions"]:
+					if group["level"] == level_name:
+						questions.append({"id": group["id"], 
+							"question": group["question"],
+							"level": group["level"]})
+      
+	return get_response(questions)
 
 # ------
 # Utility Endpoints
