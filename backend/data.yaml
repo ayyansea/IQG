@@ -1,9 +1,12 @@
 ---
 devops:
     levels:
-        - "junior"
-        - "middle"
-        - "senior"
+        - 
+            name: "junior"
+        - 
+            name: "middle"
+        - 
+            name: "senior"
     categories:
         linux:
             questions:
@@ -12,19 +15,51 @@ devops:
                     level: "junior"
                 -
                     question: "Легкий вопрос №2 :)"
+                    level: "junior"
+                -
+                    question: "Средний вопрос №1 :|"
                     level: "middle"
+                -
+                    question: "Средний вопрос №2 :|"
+                    level: "middle"
+                -
+                    question: "Сложный вопрос №1!"
+                    level: "senior"
+                - 
+                    question: "Еще один сложный вопрос!"
+                    level: "senior"
         python:
             questions:
                 - 
                     question: "Python question 1"
                     level: "middle"
+                -
+                    question: "Python question SENIOR!"
+                    level: "senior"
 
 frontend:
     levels:
-        - "junior"
+        - 
+            name: "junior"
+        - 
+            name: "middle"
     categories:
         javascript:
             questions:
                 -
-                    question: "AAAAAAAAAAAAAAA"
+                    question: "Javascript - easy question 1"
+                    level: "junior"
+                -
+                    question: "Javascript - middle question 1"
+                    level: "middle"
+                - 
+                    question: "Javascript - middle question 2"
+                    level: "middle"
+        react:
+            questions:
+                - 
+                    question: "React for noobs - question 1"
+                    level: "junior"
+                -  
+                    question: "React for noobs - question 2" 
                     level: "junior"
