@@ -80,32 +80,27 @@ body {
   flex-direction: row;
 
   flex-wrap: wrap;
+
+  margin-top: 45px;
   margin-bottom: 45px;
+  padding-left: 10vw;
+  padding-right: 10vw;  
 
   width: 100%;
 }
 
-.questions {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  width: 100%;
-}
-
-.generate {
+/* .generate {
   display: flex;
   justify-content: center;
   width: 100%;
-}
+} */
 
 .btn {
   flex-wrap: wrap;
 
   height: 40px;
-  
-  margin-top: 30px;
 
+  margin-left: 25px;
 
   padding-left: 20px;
   padding-right: 20px;
@@ -146,8 +141,7 @@ body {
     inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 }
 
-
-.test-input {
+.styledInput {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -157,6 +151,7 @@ body {
   margin: 5px 5px;
   padding-left: 15px;
   padding-right: 15px;
+
   font-size: 13px;
   letter-spacing: 0.15px;
   border: none;
@@ -168,15 +163,41 @@ body {
   box-shadow: inset 2px 2px 4px #bdbdbd, inset -2px -2px 4px #f9f9f9;
 }
 
+.questions {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
 .questionItem {
   width: 350px;
+  min-height: 200px;
   background-color: #f5f5f5;
 
   margin-left: 5px;
   margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
   padding: 25px;
   border-radius: 15px;
 
   box-shadow: 8px 8px 8px #bdbdbd;
+
+  transition: 0.3s;
+}
+
+.questionTitle {
+  color: #bdabd1;
+  margin-top: 0px;
+}
+
+.questionItem:hover {
+  -webkit-box-shadow: 0px 5px 20px 2px #9a7ebb;
+-moz-box-shadow: 0px 5px 20px 2px #9a7ebb;
+box-shadow: 0px 5px 20px 2px #9a7ebb;
 }

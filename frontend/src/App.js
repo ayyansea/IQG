@@ -179,7 +179,7 @@ const SelectJob = (props) => {
   } else {
     return (
       <div className="selectJob">
-        <select className='test-input' onChange={handleChange}>
+        <select className='styledInput' onChange={handleChange}>
           <option key={"default"} id="default">
             Должность
           </option>
@@ -224,7 +224,7 @@ const SelectLevel = (props) => {
   } else {
     return (
       <div className="selectLevel">
-        <select className="test-input" id="level" onChange={handleChange}>
+        <select className="styledInput" id="level" onChange={handleChange}>
           <option key={"default"} id="default">
             Сложность
           </option>
@@ -247,7 +247,7 @@ const SelectCount = (props) => {
 
   return (
     <div className="selectCount">
-      <select className='test-input' id="count" onChange={handleChange} disabled>
+      <select className='styledInput' id="count" onChange={handleChange} disabled>
         <option value="default">Количество вопросов</option>
         <option value="5">5</option>
         <option value="10">10</option>
