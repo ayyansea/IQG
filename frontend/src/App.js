@@ -8,8 +8,7 @@ function App() {
   const [questions, setQuestions] = useState([])
 
   const formSubmit = (result) => {
-    setQuestions(JSON.stringify(result.data))
-    console.log(result.data)
+    setQuestions(JSON.stringify(result))
   }
 
   return (
@@ -42,6 +41,47 @@ const InputsForm = (props) => {
     count: null
   })
 
+  function generateUniqueRandomRange(Max) {
+    var randomArray = [];
+    var available = [];
+
+    for (let i=0; i < Max; i++) {
+      available.push(i);
+    }
+
+    for (let i=0; i < formData.count; i++) {
+      var randomIndex = available[Math.floor(Math.random() * available.length)];
+
+      for (let i=0; i < available.length; i++) {
+        if (randomIndex == available[i])  {
+          available.splice(i, 1);
+        }
+      }
+      randomArray.push(randomIndex);
+    }
+
+    return randomArray;
+  }
+
+
+  function getRandomQuestions(questions) {
+    var randomArray = generateUniqueRandomRange(questions.length);
+    // console.log(randomArray)
+    var resultQuestions = [];
+
+    for (var i = 0; i < questions.length; i++) {
+      for (var j = 0; j < randomArray.length; j++) {
+        if (i == randomArray[j]) {
+          resultQuestions.push(questions[i]);
+        }
+      }
+    }
+    // console.log(randomQuestions);
+    // console.log(randomArray)
+    return resultQuestions;
+  }
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -49,9 +89,9 @@ const InputsForm = (props) => {
       .then(res => res.json())
       .then(
         (result) => {
-          props.callback(result)
-          console.log(result.data);
-          localStorage.setItem("questions", JSON.stringify(result.data));
+          var randomQuestions = getRandomQuestions(result.data)
+          console.log(result);
+          props.callback(randomQuestions)
         },
         (error) => {
           console.log(error);
@@ -77,7 +117,6 @@ const InputsForm = (props) => {
     var level = document.getElementById("level");
     var count = document.getElementById("count");
 
-    console.log(formData.level.name)
     if (formData.level.name == "Сложность" || formData.level.name == "") {
       count.disabled = true;
       count.selectedIndex = 0;
@@ -224,15 +263,13 @@ const Questions = (props) => {
     var resultQuestions = JSON.parse(props.data);
     const final = [];
 
-    console.log(resultQuestions)
-
     var counter = 0;
 
     for (var i = 0; i < resultQuestions.length; i++) {
       counter = counter + 1;
       final.push(
         <div className="questionItem">
-          <h1 className='questionTitle'>Вопрос № {counter}</h1>
+          <h1 className='questionTitle'>{counter}.</h1>
           <p className='questionText'>
             {resultQuestions[i].question}
           </p>
@@ -242,20 +279,5 @@ const Questions = (props) => {
     return <div className="questions">{final}</div>;
   }
 }
-
-// const QuestionItem = () => {
-//   return (
-//     <div className='questionItem'>
-//       <h1 className='questionTitle'>Question item</h1>
-//       <p className='questionText'>
-//         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-//         Suspendisse bibendum mollis placerat.
-//         Sed bibendum tristique risus in rutrum.
-//         Donec sit amet maximus nunc. Ut fringilla ipsum ut enim lacinia, eu rutrum ex feugiat.
-//         Quisque ut justo eros. Duis at dignissim massa, at porttitor libero.
-//         Praesent vel velit consequat, sollicitudin ante sit amet, maximus dui.
-//       </p>
-//     </div>);
-// }
 
 export default App;
