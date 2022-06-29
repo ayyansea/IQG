@@ -12,137 +12,179 @@ devops:
             questions:
                 -
                     question: "Чем отличается git pull от git fetch?"
+                    answer: "git pull — это, по сути, команда git fetch, после которой сразу же следует git merge. git fetch получает изменения с сервера и сохраняет их в каталог refs/remotes/. Это никак не влияет на локальные ветки и текущие изменения. А git merge уже вливает все эти изменения в локальную копию."
                     level: "junior"
                 -
                     question: "Что такое Git? Чем отличается GitLab от GitHub"
+                    answer: "Git — распределённая система котроля версий. GitHub и GitLab — популярные системы контроля версий, хранения программного кода, и хостинга проектов. Сервисы не сильно отличаются друг от друга, но при сравнении можно выделить: GitLab можно запустить на собственном сервере и есть множество функций для работы в команде." 
                     level: "junior"
                 -
                     question: "Что означает репозиторий в Git?"
+                    answer: "Репозиторий Git — это виртуальное хранилище проекта. В нем можно хранить версии кода для доступа по мере необходимости"
                     level: "junior"
                 -
                     question: "Опишите ситуации, в которых можно использовать merge или rebase."
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как вы использовали Git для CI/CD?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как можно отменить коммит в Git, если он уже был опубликован?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Перед вами: монорепозиторий, который руками копируют на машины. Опишите пошагово все действия, которыми бы вы разбили репозиторий на части и настроили CI/CD."
+                    answer: ""
                     level: "senior"
                 - 
                     question: "Что такое staging area или index в Git ?"
+                    answer: ""
                     level: "senior"
         cicd:
             questions:
                 -
                     question: "Что такое Jenkins и CI/CD?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое Git? Чем отличается GitLab от GitHub"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что означает репозиторий в Git?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое Continuous Integration/Delivery/Deployment и чем они друг от друга отличаются?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "С какими CI-системами работали? В чем отличия Jenkins от TeamCity и других аналогичных систем"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как вы использовали Git для CI/CD?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как можно отменить коммит в Git, если он уже был опубликован?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как разрешать конфликты слияния?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Перед вами: монорепозиторий, который руками копируют на машины. Опишите пошагово все действия, которыми бы вы разбили репозиторий на части и настроили CI/CD."
+                    answer: ""
                     level: "senior"
                 - 
                     question: "Что такое staging area или index в Git ?"
+                    answer: ""
                     level: "senior"
         general:
             questions:
                 -
                     question: "Опишите модель OSI и все е уровни"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое DevOps, Agile?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Зачем нужен DevOps?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Какие инструменты вы считаете лучшими для DevOps и как они работают вместе?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Расскажите про GitOps."
+                    answer: ""
                     level: "middle"
                 -
                     question: "Расскажите про опыт CI/CD для Kubernetes с использованием Git."
+                    answer: ""
                     level: "senior"
         linux:
             questions:
                 -
                     question: "Как управлять системными сервисами?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что показывает команда df?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "В чем разница между командами df и du?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Расскажите про структуру файловой системы в Linux."
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что делает команда echo?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое ulimit?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как создавать системные сервисы для systemd?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Расскажите про символические ссылки."
+                    answer: ""
                     level: "middle"
                 -
                     question: "Какими способами можно оптимизировать использование оперативной памяти в системе?"
+                    answer: ""
                     level: "senior"
                 - 
                     question: "Расскажите как вы подходили к безопасности системы?"
+                    answer: ""
                     level: "senior"
         python:
             questions:
                 -
                     question: "Как устанавливать и импортировать библиотеки?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое виртуальное окружение?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое f-строка?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Для чего используется библиотека requests?"
+                    answer: ""
                     level: "junior"
                 -      
                     question: "Для чего нужны лямбда функции?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "О чем говорится в стандарте PEP8?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Опишите простую структуру python репозитория."
+                    answer: ""
                     level: "middle"
                 -
                     question: "Расскажите о том как вы использовали классы в python."
+                    answer: ""
                     level: "middle"
 
 frontend:
@@ -156,109 +198,143 @@ frontend:
             questions:
                 -
                     question: "Что такое HTTP?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое HTTP cookie и для чего их используют?"
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Расскажите о CSS методологиях."
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Ваше приложение тормозит или долго грузится, на что первое обратите внимание? и как будете действовать?"
+                    answer: ""
                     level: "middle"
                 - 
                     question: "Как бы вы организовали структуру файлов и папок на проекте?"
+                    answer: ""
                     level: "middle"
                 - 
                     question: "Расскажите о пирамиде тестирования."
+                    answer: ""
                     level: "middle"
                 - 
                     question: "Расскажите, как вы понимаете Web Accessibility"
+                    answer: ""
                     level: "middle"
         htmlcss:
             questions:
                 -
                     question: "Опишите базовую структуру HTML-документа."
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое метатеги?"
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Что такое HTML-тег?"
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Все теги в HTML являются парными?"
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Расскажите о CSS методологиях."
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Что такое #shadow-root в инспекторе HTML-страницы?"
+                    answer: ""
                     level: "middle"
                 - 
                     question: "Почему удаление лишних символов пробелов (и символов переноса) в HTML не отражается на конечной производительности загрузки страницы?"
+                    answer: ""
                     level: "middle"
                 - 
                     question: "Какие CSS-свойства могут быть обработаны непосредственно через GPU? Что такое композитные слои и почему большое их количество может привести к аварийному завершению работы браузера на мобильных устройствах?"
+                    answer: ""
                     level: "middle"
                 - 
                     question: "Как адаптировать страницу для печати?"
+                    answer: ""
                     level: "middle"
         javascript:
             questions:
                 -
                     question: "Что такое замыкание (closure) и какие существуют сценарии его использования?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "С помощью чего в JS реализуются наследование?"
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Что такое типы данных и как их сравнивать? Чем отличается == от ===? Что такое null и undefined?"
+                    answer: ""
                     level: "junior"
                 - 
                     question: "Как работают методы .filter, .map, .reduce и зачем они нужны?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое this-объект?"
+                    answer: ""
                     level: "junior"
                 -
                     question: "Что такое temporal dead zone?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как работает boxing/unboxing в JavaScript?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Как реализовать паттерн «Модуль»?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Опишите назначение и принципы работы с коллекциями WeakMap и WeakSet. Чем они отличаются от коллекций Map и Set соответственно?"
+                    answer: ""
                     level: "middle"
                 -
                     question: "Расскажите о последовательном и параллельном выполнении асинхронных функций. В чем разница между Promise.all ) и Promise.allSettled()?"
+                    answer: ""
                     level: "middle"
         react:
             questions:
                 - 
                     question: "Что такое virtual DOM?"
+                    answer: ""
                     level: "junior"
                 -  
                     question: "Для чего нужен атрибут key при рендере списков?" 
+                    answer: ""
                     level: "junior"
                 -  
                     question: "Что такое хуки в React? Какие хуки вы знаете?" 
+                    answer: ""
                     level: "junior"
                 -  
                     question: "Какие методы жизненного цикла компонента существуют в React?" 
+                    answer: ""
                     level: "junior"
                 -  
                     question: "Что такое Context в React и для чего он используется?" 
+                    answer: ""
                     level: "junior"
                 -  
                     question: "Какие преимущества компонентного подхода в React?" 
+                    answer: ""
                     level: "middle"
                 -  
                     question: "Чем отличаются хуки или классы React?" 
+                    answer: ""
                     level: "middle"
                 -  
                     question: "Какие способы оптимизации React приложений?" 
+                    answer: ""
                     level: "middle"
