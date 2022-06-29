@@ -1,5 +1,6 @@
 //import modules
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import ReactModal from 'react-modal';
 
 //import components
 import './App.css';
@@ -19,10 +20,8 @@ function App() {
       </header>
 
       <div className="mainContainer">
-
         <InputsForm callback={formSubmit} />
         <Questions data={questions} />
-
       </div>
     </div>
   );
@@ -45,28 +44,26 @@ const InputsForm = (props) => {
     var randomArray = [];
     var available = [];
 
-    for (let i=0; i < Max; i++) {
+    for (let i = 0; i < Max; i++) {
       available.push(i);
     }
 
-    for (let i=0; i < formData.count; i++) {
+    for (let i = 0; i < formData.count; i++) {
       var randomIndex = available[Math.floor(Math.random() * available.length)];
 
-      for (let i=0; i < available.length; i++) {
-        if (randomIndex == available[i])  {
+      for (let i = 0; i < available.length; i++) {
+        if (randomIndex == available[i]) {
           available.splice(i, 1);
         }
       }
       randomArray.push(randomIndex);
     }
-
     return randomArray;
   }
 
 
   function getRandomQuestions(questions) {
     var randomArray = generateUniqueRandomRange(questions.length);
-    // console.log(randomArray)
     var resultQuestions = [];
 
     for (var i = 0; i < questions.length; i++) {
@@ -76,8 +73,6 @@ const InputsForm = (props) => {
         }
       }
     }
-    // console.log(randomQuestions);
-    // console.log(randomArray)
     return resultQuestions;
   }
 
@@ -258,26 +253,61 @@ const SelectCount = (props) => {
 }
 
 const Questions = (props) => {
+  const [state, setItems] = useState({
+    modalIsOpen: false,
+    textModal: ""
+  });
+
+  const openModal = (dataAnswer) => {
+    console.log(dataAnswer);
+    setItems({ modalIsOpen: true, textModal: dataAnswer });
+  };
+
+  const closeModal = () => {
+    setItems({ modalIsOpen: false });
+  };
 
   if (props.data.length > 0) {
     var resultQuestions = JSON.parse(props.data);
     const final = [];
 
     var counter = 0;
+    var textAnswer = "";
 
     for (var i = 0; i < resultQuestions.length; i++) {
       counter = counter + 1;
-      final.push(
-        <div className="questionItem">
-          <h1 className='questionTitle'>{counter}.</h1>
-          <p className='questionText'>
-            {resultQuestions[i].question}
-          </p>
-        </div>
+      textAnswer = resultQuestions[i].question;
+
+      console.log(counter);
+
+      final.push(<QuestionItem
+        count={counter}
+        question={resultQuestions[i].question}
+        answer={resultQuestions[i].answer}
+        callback={openModal} />
       );
     }
-    return <div className="questions">{final}</div>;
+    return (
+      <div className="questions">
+        {final}
+        <ReactModal isOpen={state.modalIsOpen} onRequestClose={closeModal} className="questionModal">
+          <button onClick={closeModal}>close</button>
+          <div>{state.textModal}</div>
+        </ReactModal>
+      </div>);
   }
+}
+
+const QuestionItem = (props) => {
+  return (
+    <div className="questionItem">
+      <h1 className='questionTitle'>{props.count}.</h1>
+      <p className='questionText'>
+        {props.question}
+      </p>
+      <button onClick={() => props.callback((props.answer))}>Open Modal</button>
+    </div>
+  )
 }
 
 export default App;
