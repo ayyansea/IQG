@@ -96,6 +96,7 @@ def get_questions(job_id, level_id):
 					if group["level"] == level_name:
 						questions.append({"id": group["id"], 
 							"question": group["question"],
+                            "answer": group["answer"],
 							"level": group["level"]})
       
 	return get_response(questions)
