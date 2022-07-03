@@ -290,8 +290,8 @@ const Questions = (props) => {
     return (
       <div className="questions">
         {final}
-        <ReactModal isOpen={state.modalIsOpen} onRequestClose={closeModal} className="questionModal">
-          <button onClick={closeModal}>close</button>
+        <ReactModal isOpen={state.modalIsOpen} onRequestClose={closeModal} className="questionModal" ariaHideApp={false}>
+          <button class="closeModal" onClick={closeModal}></button>
           <div>{state.textModal}</div>
         </ReactModal>
       </div>);
@@ -305,7 +305,9 @@ const QuestionItem = (props) => {
       <p className='questionText'>
         {props.question}
       </p>
-      <button onClick={() => props.callback((props.answer))}>Open Modal</button>
+      <div className="buttonWrapper">
+        <button class="openModal" onClick={() => props.callback((props.answer))}>?</button>
+      </div>
     </div>
   )
 }
